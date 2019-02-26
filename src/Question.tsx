@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import wald from "./wald.jpeg";
 import berg from "./berg.jpeg";
 
+
 interface QuestionProps {
     setShowNumber:(waldNumber:number,  bergNumber: number)=> void;
 }
@@ -12,6 +13,11 @@ interface QuestionState {
   waldNumber: number;
   bergNumber: number;
   submit: boolean;
+  opacityNum:number;
+  opacity1:number;
+  opacity2:number;
+  counter:number;
+
 }
 
 export default class Question extends React.PureComponent<QuestionProps, QuestionState> {
@@ -21,9 +27,14 @@ export default class Question extends React.PureComponent<QuestionProps, Questio
       showLogo: true,
       waldNumber: 0,
       bergNumber: 0,
-      submit: false
+      submit: false,
+      opacityNum:0,
+      opacity1: 1,
+      opacity2: 1,
+      counter:0,
     };
-  }
+}
+
   render() {
     return (
         [<div className="QuestionContainer">
@@ -34,21 +45,23 @@ export default class Question extends React.PureComponent<QuestionProps, Questio
               id='picture'
               onClick={(e: any) => {
                 this.wahl("wald");
+                this.moreOpacity(1);
               }}
+              style={{opacity: this.state.opacity1}}
             >
               <img src={wald} id="pic1"className="picture" alt="logo" />
             </div>
             <div className="space" />
             <div
               className="clickFrame"
-              id='picture'
+              id='picture'              
               onClick={(e: any) => {
                 this.wahl("berg");
-                let choosed = document.body.classList.add('choosed');
+                this.moreOpacity(2);
                 console.log("click")
                 }
-              }            >
-              <img src={berg} className="picture" alt="logo" />
+              } style={{opacity: this.state.opacity2}}>           
+              <img src={berg} id="pic2" className="picture" alt="logo" />
             </div>
           </div>
         <button onClick={(e:any) => {this.props.setShowNumber(this.state.waldNumber, this.state.bergNumber);}}>
@@ -65,7 +78,65 @@ export default class Question extends React.PureComponent<QuestionProps, Questio
 // if (JSON.parse(localStorage.getItem('light-theme-enabled'))) {
 //     document.body.classList.add('light-theme');
 // }
+  // opacity(id:string, choose:string){
+    
+  //   document.getElementsByName(id).classList.add(choose);
+  // }
+  moreOpacity = (opacityNum:number) => {
 
+    if(opacityNum == 1 && this.state.counter==0) { //wird ausgeführt, wenn wald angetippt wird
+      this.setState(
+        prevState => ({opacity2: prevState.opacity2 - 0.9}));
+      this.setState(
+        prevState => ({opacity1: prevState.opacity1 + 0.9}));
+      this.setState(
+        prevState => ({counter: prevState.counter + 1}));
+        console.log("transparent");
+   } else {             //wird ausgeführt, wenn wald angetippt wird  
+    if(opacityNum == 2 && this.state.counter==0)    {        
+      this.setState(
+        prevState => ({opacity1: prevState.opacity1 - 0.9}));
+      this.setState(
+        prevState => ({opacity2: prevState.opacity2 + 0.9}));
+      }
+   }
+
+   if(opacityNum == 1 && this.state.opacity2 == 0.1 && this.state.counter > 0) { 
+    this.setState(
+      prevState => ({opacity2: prevState.opacity2 + 0.9}));
+    this.setState(
+      prevState => ({opacity1: prevState.opacity1 - 0.9}));
+    this.setState(
+      prevState => ({counter: prevState.counter + -1}));
+      console.log("transparent");
+ } else {
+  if(opacityNum == 2 && this.state.opacity1 == 0.1&& this.state.counter > 0) {
+    this.setState(
+      prevState => ({opacity1: prevState.opacity1 - 0.9}));
+    this.setState(
+      prevState => ({opacity2: prevState.opacity2 + 0.9}));
+    this.setState(
+      prevState => ({counter: prevState.counter + -1}));
+    }
+ }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   switchLogo(e: any) {
     this.setState({ showLogo: !this.state.showLogo });
     console.log("lool");
@@ -83,6 +154,7 @@ export default class Question extends React.PureComponent<QuestionProps, Questio
         console.log(this.state.bergNumber);
       }
     }
+    
   }
   submit(e: any){this.setState({ submit: !this.state.submit });
    }

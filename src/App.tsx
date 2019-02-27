@@ -1,19 +1,19 @@
 import * as React from 'react';
-import "./App.css";
+import "./App.scss";
 import  Question  from "./Question";
 import  Result  from "./Result";
 
-interface AppProps {}
+interface IAppProps {}
 
-interface AppState {
+interface IAppState {
   showResult: boolean,
   showQuestion: boolean,
   waldNumber: number,
   bergNumber: number
 }
 
-export default class App extends React.PureComponent<AppProps, AppState> {
-  constructor(props: AppProps) {
+export default class App extends React.PureComponent<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
     super(props);
     this.state = {
       showResult:false,

@@ -6,22 +6,37 @@
   align-self: center;
 }
 
+.pictureContainer {
+  width: 80%;
+
+  .choosen {
+    color: red;
+  }
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
 
-.picture {
-  height: calc(100%-40vmin);
-  width: calc(100%-40vmin);
+/*.picture {
+  height: calc(100% - 0vmin);
+  width: calc(100% - 80vmin);
   pointer-events: none;
   margin-left: 0%;
   justify-content: flex-start;
-}
+  margin-right: 1%;
+}*/
 
 .clickFrame {
   cursor: pointer;
+  width: auto;
+  pointer-events: none;
+  /* margin-left: 3%; */
+  justify-content: flex-start;
+  /* margin-right: 3%; */
+  margin: 9px 12px 9px 12px;
 }
 
 .choosed{
@@ -102,8 +117,8 @@ button {
   border-radius: 3px;
   max-width: 10%;
   align-self: center;
-  position: absolute;
-  margin-bottom: 10vh;
+  position: static;
+  margin: 10vh;
   bottom: 0;
 }
 

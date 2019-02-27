@@ -1,18 +1,18 @@
 import * as React from "react";
 
-interface ResultProps {
+interface IResultProps {
   back: ()=> void;
   waldNumber: number;
   bergNumber: number;
 }
 
-interface ResultState {
+interface IResultState {
   percentageWald:number
   percentageBerg:number
 }
 
-export default class Result extends React.PureComponent<ResultProps, ResultState> {
-  constructor(props: ResultProps) {
+export default class Result extends React.PureComponent<IResultProps, IResultState> {
+  constructor(props: IResultProps) {
     super(props);
     this.state = {
       percentageWald: Math.round((this.props.waldNumber/(this.props.waldNumber + this.props.bergNumber))*10000)/100,

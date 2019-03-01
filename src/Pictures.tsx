@@ -5,6 +5,7 @@ import {isUndefined} from "util";
 
 interface IPicturesProps {
     pictures: IPicture[];
+    didSelect: (id:number) => void;
 }
 interface IPicturesState{
     selectedId?: number;
@@ -36,7 +37,7 @@ IPicturesState
     }
     setSelectedId(id:number){
         this.setState({selectedId:id})
-
+        this.props.didSelect(id)
     }
 }
 

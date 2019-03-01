@@ -13,7 +13,7 @@ interface IPictureProps {
 interface IPictureState {
   transparentCounter: number;
   clickCounter: number;
-  choosen: boolean;
+  chosen: boolean;
 
 }
 
@@ -23,7 +23,7 @@ export default class Picture extends React.Component<IPictureProps, IPictureStat
     this.state = {
       transparentCounter: 0,
       clickCounter: 0,
-      choosen: false,
+      chosen: false,
 
     };
   }
@@ -35,7 +35,6 @@ export default class Picture extends React.Component<IPictureProps, IPictureStat
           // this.wahl(this.props.picName);
           // this.moreOpacity(1);
           console.log("click")
-          localStorage.setItem('choosen', 'choosen');
           
 
           this.props.setSelectedPicture(this.props.picture.id)

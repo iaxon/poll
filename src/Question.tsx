@@ -4,6 +4,7 @@ import wald from "./wald.jpeg";
 import berg from "./berg.jpeg";
 import  Picture  from "./Picture";
 import Pictures from "./Pictures";
+import { number } from "prop-types";
 
 interface IQuestionProps {
   setShowNumber: (waldNumber: number, bergNumber: number) => void;
@@ -23,8 +24,7 @@ interface IQuestionState {
   counter: number;
   picName:string;
   pictures: IPicture[];
-  isHidden: boolean;
-  refresh:boolean;
+  selectedId?: number
 }
 
 export default class Question extends React.PureComponent<
@@ -44,21 +44,16 @@ export default class Question extends React.PureComponent<
       counter: 0,
       picName: "wald",
       pictures: [],
-      isHidden: true,
-      refresh:false,
     };
   }
-wahl(){
-
-}
 
   render() {
-    localStorage.getItem('choosen') === 'choosen' ?this.setState({isHidden:false}): true;
+
     return (
       <div className="QuestionContainer">
-        <a>
+        <h3>
           Welches Bild ist besser?
-        </a>
+        </h3>
         <div className="container">
           {/* <Picture 
           picName={wald}
@@ -76,10 +71,9 @@ wahl(){
             {id:6, url:wald},
             {id:7, url:berg},
 
-          ]}/>
-        </div>
-          {!this.state.isHidden &&         
-          <button
+          ]} didSelect={(id: number) => this.didSelect(id)}/>
+        </div>  
+          <button hidden={this.state.selectedId === undefined}
           onClick={(e: any) => {
             this.props.setShowNumber(
               this.state.waldNumber,
@@ -88,16 +82,15 @@ wahl(){
           }}
         >
           Weiter
-        </button>}
+        </button>
 
       </div>
     );
   }
-  setRefresh(refresh:boolean){
-    this.setState({refresh:true})
-  
-  } 
-}
+
+  didSelect = (id: number) => {
+    this.setState({selectedId: id})
+  }
 
 
   //   document.getElementById('picture').addEventListener('change', function () {
@@ -142,3 +135,4 @@ wahl(){
   // submit(e: any) {
   //   this.setState({ submit: !this.state.submit });
   // }
+}

@@ -1,3 +1,16 @@
+$bgColor: #282c34;
+$buttonColor: #2f78ed;
+@mixin standartButton {
+  background-color: $bgColor;
+  color: $buttonColor;
+  border: 2px solid $buttonColor;
+  font-size: 27px;
+  padding: 6px;
+  border-radius: 3px;
+}
+
+
+
 
 .App {
   text-align: center;
@@ -41,14 +54,15 @@
   justify-content: flex-start;
   /* margin-right: 3%; */
   margin: 9px 12px 9px 12px;
+  display: inline-block;
   }
 
-.choosed{
+.opacity{
   opacity: 0.5;
 }
 
 .QuestionContainer {
-  background-color: #282c34;
+  background-color: $bgColor;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,7 +74,7 @@
 }
 
 .ResultContainer {
-  background-color: #282c34;
+  background-color: $bgColor;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -91,7 +105,7 @@
 }
 
 .container {
-  background-color: #282c34;
+  background-color: $bgColor;
   min-height: 40vmin;
   display: flex;
   flex-direction: row;
@@ -112,23 +126,22 @@
   background-color: white;
 }
 
-button {
-  background-color: #282c34;
-  color: #2f78ed;
-  border: 2px solid #2f78ed;
-  font-size: 27px;
-  padding: 6px;
-  border-radius: 3px;
+
+.submitButton{
+  @include standartButton;
   max-width: 10%;
   align-self: center;
   position: static;
   margin: 10vh;
   bottom: 0;
 }
-.submitButton{
-
+.resetButton{
+  @include standartButton;
+  max-width: 10%;
+  align-self: flex-end;
+  position: sticky;
+  margin-right: 22.9vw;
 }
-
 .App-link {
   color: #61dafb;
 }

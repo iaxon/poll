@@ -54,17 +54,15 @@ export default class Question extends React.PureComponent<
         <h3>
           Welches Bild ist besser?
         </h3>
-        <button hidden={this.state.selectedId === undefined}
+        <button className="resetButton"hidden={this.state.selectedId === undefined}
           onClick={(e: any) => {
-            this.props.setShowNumber(
-              this.state.waldNumber,
-              this.state.bergNumber
-            );
+            this.setState({selectedId: undefined})
           }}
         >
           Reset
         </button>
         <div className="container">
+        
           {/* <Picture 
           picName={wald}
           />

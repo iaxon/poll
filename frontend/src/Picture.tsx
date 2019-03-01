@@ -29,7 +29,7 @@ export default class Picture extends React.Component<IPictureProps, IPictureStat
   }
   render() {
     return (
-      <div className="clickFrame" id="picture" style={{ opacity: this.props.highlighted ?1:0.1, display: 'inline-block' }}           
+      <div className="clickFrame" id="picture" style={{ opacity: this.props.highlighted ?1:0.1, }}           
         >
         <img src={this.props.picture.url} id="pic1" className="picture" alt="logo"  onClick={() => {
           // this.wahl(this.props.picName);

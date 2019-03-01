@@ -23,6 +23,8 @@ interface IQuestionState {
   counter: number;
   picName:string;
   pictures: IPicture[];
+  isHidden: boolean;
+  refresh:boolean;
 }
 
 export default class Question extends React.PureComponent<
@@ -41,7 +43,9 @@ export default class Question extends React.PureComponent<
       opacity2: 1,
       counter: 0,
       picName: "wald",
-      pictures: []
+      pictures: [],
+      isHidden: true,
+      refresh:false,
     };
   }
 wahl(){
@@ -49,6 +53,7 @@ wahl(){
 }
 
   render() {
+    localStorage.getItem('choosen') === 'choosen' ?this.setState({isHidden:false}): true;
     return (
       <div className="QuestionContainer">
         <a>
@@ -61,7 +66,7 @@ wahl(){
           <Picture 
           picName={berg}
           /> */}
-          <Pictures pictures={[
+          <Pictures  pictures={[
             {id:0, url:wald},
             {id:1, url:berg},
             {id:2, url:wald},
@@ -73,7 +78,8 @@ wahl(){
 
           ]}/>
         </div>
-        <button
+          {!this.state.isHidden &&         
+          <button
           onClick={(e: any) => {
             this.props.setShowNumber(
               this.state.waldNumber,
@@ -82,10 +88,18 @@ wahl(){
           }}
         >
           Weiter
-        </button>
+        </button>}
+
       </div>
     );
   }
+  setRefresh(refresh:boolean){
+    this.setState({refresh:true})
+  
+  } 
+}
+
+
   //   document.getElementById('picture').addEventListener('change', function () {
   //     let darkThemeEnabled = document.body.classList.toggle('light-theme');
   //     localStorage.setItem('light-theme-enabled', darkThemeEnabled);
@@ -98,23 +112,7 @@ wahl(){
 
   //   document.getElementsByName(id).classList.add(choose);
   // }
-  moreOpacity = (opacityNum: number) => {
-    if (opacityNum == 1 && this.state.counter == 0) {
-      //wird ausgeführt, wenn wald angetippt wird
-      this.setState({ opacity2: 0.1 });
-      //this.setState(
-      //prevState => ({opacity1: prevState.opacity1 + 0.9}));
-      this.setState(prevState => ({ counter: 1 }));
-      console.log("transparent");
-    } else {
-      //wird ausgeführt, wenn berg angetippt wird
-      if (opacityNum == 2 && this.state.counter == 0) {
-        this.setState(prevState => ({ opacity1: 0.1 }));
-        this.setState(prevState => ({ counter: 1 }));
-        // this.setState(
-        //   prevState => ({opacity2: prevState.opacity2 + 0.9}));
-      }
-    }
+
 
     //    if(opacityNum == 1 && this.state.opacity2 == 0.1 && this.state.counter == 0) { //waldclick && opacity von Berg == 0.1 &&  counter == 1
     //     this.setState(
@@ -134,14 +132,13 @@ wahl(){
     //       prevState => ({counter: 0}));
     //     }
     //  }
-  };
+  // };
 
-  switchLogo(e: any) {
-    this.setState({ showLogo: !this.state.showLogo });
-    console.log("lool");
-  }
+  // switchLogo(e: any) {
+  //   this.setState({ showLogo: !this.state.showLogo });
+  //   console.log("lool");
+  // }
 
-  submit(e: any) {
-    this.setState({ submit: !this.state.submit });
-  }
-}
+  // submit(e: any) {
+  //   this.setState({ submit: !this.state.submit });
+  // }

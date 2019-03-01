@@ -19,8 +19,9 @@ export default class App extends React.PureComponent<IAppProps, IAppState> {
       showResult:false,
       showQuestion:false,
       waldNumber: 0,
-      bergNumber: 0
+      bergNumber: 0,
     }
+    localStorage.removeItem('choosen')
   }
   setShowNumber(waldNumber:number,  bergNumber: number){
     this.setState({

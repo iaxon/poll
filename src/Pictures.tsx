@@ -23,7 +23,7 @@ IPicturesState
         const body: JSX.Element[] = [];
         this.props.pictures.forEach((pic: IPicture, index: number) => {
             body.push(
-                <Picture key={'pic-' + index} picture={pic}  highlighted={this.state.selectedId === undefined || this.state.selectedId === pic.id} setSelectedPicture={this.setSelectedId}/>
+                <Picture key={'pic-' + index} picture={pic}  highlighted={this.state.selectedId === undefined || this.state.selectedId === pic.id} setSelectedPicture={(id: number) => this.setSelectedId(id)}/>
             );
         })
 

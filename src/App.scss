@@ -29,15 +29,18 @@
   margin-right: 1%;
 }*/
 
+// .clickFrame :hover {
+//   filter: blur(10px);
+// }
+
 .clickFrame {
   cursor: pointer;
   width: auto;
-  pointer-events: none;
   /* margin-left: 3%; */
   justify-content: flex-start;
   /* margin-right: 3%; */
   margin: 9px 12px 9px 12px;
-}
+  }
 
 .choosed{
   opacity: 0.5;

@@ -85,7 +85,18 @@ $buttonColor: #2f78ed;
   text-align: center;
   bottom: 0;
 }
-
+.LoginContainer {
+  background-color: $bgColor;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  text-align: center;
+  bottom: 0;
+}
 .percentage {
   margin-top: 1%;
   margin-bottom: 1%;
@@ -126,6 +137,14 @@ $buttonColor: #2f78ed;
   background-color: white;
 }
 
+.loginButton{
+  @include standartButton;
+  max-width: 10%;
+  align-self: center;
+  position: static;
+  margin: 10vh;
+  bottom: 0;
+}
 
 .submitButton{
   @include standartButton;

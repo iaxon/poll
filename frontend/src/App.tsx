@@ -2,6 +2,7 @@ import * as React from 'react';
 import "./App.scss";
 import  Question  from "./Question";
 import  Result  from "./Result";
+import Login from "./Login";
 
 interface IAppProps {}
 
@@ -9,7 +10,8 @@ interface IAppState {
   showResult: boolean,
   showQuestion: boolean,
   waldNumber: number,
-  bergNumber: number
+  bergNumber: number,
+  showLogin: boolean,
 }
 
 export default class App extends React.PureComponent<IAppProps, IAppState> {
@@ -20,6 +22,8 @@ export default class App extends React.PureComponent<IAppProps, IAppState> {
       showQuestion:false,
       waldNumber: 0,
       bergNumber: 0,
+      showLogin: true,
+
     }
     localStorage.removeItem('chosen')
   }
@@ -27,7 +31,7 @@ export default class App extends React.PureComponent<IAppProps, IAppState> {
     this.setState({
       waldNumber: waldNumber,
       bergNumber: bergNumber,
-      showResult: true
+      showResult: true,
 
     })
 
@@ -35,19 +39,47 @@ export default class App extends React.PureComponent<IAppProps, IAppState> {
   render() {
     return (
       <div>
-        {!this.state.showResult?
-        <Question
-          setShowNumber={(waldNumber:number, bergNumber:number,) => this.setShowNumber(waldNumber, bergNumber)}
-          />
-        :
-        <Result 
-        back={()=>{this.setState({showResult:false})}}
-        waldNumber={this.state.waldNumber}
-        bergNumber={this.state.bergNumber}
-      />
-      }
-       
-      </div>
+        {this.state.showLogin?
+        (<Login
+          login={()=>{this.setState({showLogin:false})}}
+        />)
+         : null}
+         {/* <Login
+           login={()=>{this.setState({showLogin:false})}}
+         />}
+
+        </div> */}
+
+         {!this.state.showResult && !this.state.showLogin?
+         <Question
+           setShowNumber={(waldNumber:number, bergNumber:number,) => this.setShowNumber(waldNumber, bergNumber)}
+           />
+         : null}
+         {this.state.showResult && !this.state.showLogin?
+         <Result
+         back={()=>{this.setState({showResult:false})}}
+         waldNumber={this.state.waldNumber}
+         bergNumber={this.state.bergNumber}
+       ></Result>
+       : null}
+
+
+          {/* {
+            (() => {
+                  if (this.state.showLogin)
+                      return
+                      <Login
+                        login={()=>{this.setState({showLogin:false})}}
+                      />
+                  if (!this.state.showResult)
+                      return
+                        <Question
+                          setShowNumber={(waldNumber:number, bergNumber:number,) => this.setShowNumber(waldNumber, bergNumber)}
+                        />
+
+            })()
+          } */}
+    </div>
     );
   }
 }

@@ -2,6 +2,7 @@
   "name": "poll",
   "version": "0.1.0",
   "private": true,
+    "homepage" : "https://pg.sas2020.de/poll",
   "dependencies": {
     "@types/jest": "24.0.6",
     "@types/node": "11.9.5",
@@ -9,7 +10,7 @@
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5",
+    "react-scripts": "^2.1.8",
     "typescript": "3.3.3333"
   },
   "scripts": {

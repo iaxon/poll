@@ -2,15 +2,21 @@
   "name": "poll",
   "version": "0.1.0",
   "private": true,
-    "homepage" : "https://pg.sas2020.de/poll",
+  "homepage": "https://pg.sas2020.de/poll",
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@types/classnames": "^2.2.7",
     "@types/jest": "24.0.6",
     "@types/node": "11.9.5",
     "@types/react-dom": "16.8.2",
+    "@types/react-text-mask": "^5.4.4",
+    "contentful": "^7.5.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-number-format": "^4.0.7",
     "react-scripts": "^2.1.8",
+    "react-text-mask": "^5.4.3",
     "typescript": "3.3.3333"
   },
   "scripts": {

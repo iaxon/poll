@@ -47,7 +47,6 @@ export default class App extends React.PureComponent<IAppProps, IAppState> {
          {/* <Login
            login={()=>{this.setState({showLogin:false})}}
          />}
-
         </div> */}
 
          {!this.state.showResult && !this.state.showLogin?

@@ -32,7 +32,7 @@ function TextMaskCustom(props: TextMaskCustomProps) {
       ref={(ref: any) => {
         inputRef(ref ? ref.inputElement : null);
       }}
-      mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+      mask={[/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
       placeholderChar={'\u2000'}
       showMask
     />
@@ -82,7 +82,7 @@ interface State {
 
 class FormattedInputs extends React.Component<Props, State> {
   state = {
-    textmask: '(1  )    -    ',
+    textmask: '    -    ',
     numberformat: '1320',
   };
 
@@ -105,17 +105,15 @@ class FormattedInputs extends React.Component<Props, State> {
             onChange={this.handleChange('textmask')}
             id="formatted-text-mask-input"
             inputComponent={TextMaskCustom as any}
-          />
+                  />
         </FormControl>
         <TextField
           className={classes.formControl}
-          label="react-number-format"
-          value={numberformat}
-          onChange={this.handleChange('numberformat')}
-          id="formatted-numberformat-input"
-          InputProps={{
-            inputComponent: NumberFormatCustom as any,
-          }}
+          value={textmask}
+          onChange={this.handleChange('textmask')}
+          id="formatted-text-mask-input"
+            variant="outlined"
+
         />
       </div>
     );

@@ -9,6 +9,7 @@ interface ILoginProps {
 interface ILoginState {
   showLogin: boolean;
   value: string;
+  inputValue: string;
 }
 
 
@@ -18,6 +19,7 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
     this.state = {
       showLogin: true,
       value: '',
+      inputValue: '1',
     };
   }
 
@@ -25,7 +27,7 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
     return (
       <div className= "LoginContainer" >
 
-      <Input/>
+      <Input  inputValue={(inputValue: string) => this.setState({inputValue})}/>
 
           {// <form onSubmit={this.handleSubmit}>
             // <label>
@@ -34,10 +36,15 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
             //   </label>
             //</form>
           }
-          <button className="loginButton" onClick = {(e: any) => { this.props.login(); }}>
+          {//<button className="loginButton" onClick = {(e: any) => { this.props.login(); }}>
+           //   Login
+         // </button>
+        }
+
+        <button className="loginButton" onClick = {(e: any) => {console.log(this.state.inputValue)}}>
               Login
           </button>
-
+         
     </div>
     );
   }

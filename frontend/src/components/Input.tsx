@@ -18,6 +18,8 @@ import FormControl from '@material-ui/core/FormControl';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 import blue from '@material-ui/core/colors/blue';
+import { connect } from "react-redux";
+import { loginInput } from "../redux/actions";
 
 const theme = createMuiTheme({
   palette: {
@@ -30,6 +32,7 @@ const theme = createMuiTheme({
 
 export interface ILoginProps {
        inputValue: (textFieldValue: string) => void;
+       idName: string;
 }
 
 export interface ILoginState {
@@ -53,6 +56,7 @@ class TextFields extends React.Component<ILoginProps, ILoginState> {
         this.setState({
             textFieldValue: e.target.value
         });
+        this.props.loginInput(e.tartget.value);
        // this.setProps({   });
         //console.log(this.state.textFieldValue);
     };
@@ -65,15 +69,15 @@ class TextFields extends React.Component<ILoginProps, ILoginState> {
         
         <MuiThemeProvider theme={theme}>
         <TextField
-          className="inputField"
-          label="Einmalcode"
-          placeholder="XXXXXX"
-          variant="outlined"
-          id="mui-theme-provider-outlined-input"
-          
-          onChange={this.handleChange.bind(this)}
-          
+            id={this.props.idName}
+            className="inputField"
+            label="Einmalcode"
+            placeholder="XXXXXX"
+            variant="outlined"
+
+            onChange={this.handleChange.bind(this)}
         />
+        
         </MuiThemeProvider>
         <button onClick= {(e: any) => {console.log(this.state.textFieldValue)}} />
         

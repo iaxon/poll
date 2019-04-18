@@ -27,8 +27,10 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
     return (
       <div className= "LoginContainer" >
 
-      <Input  inputValue={(inputValue: string) => this.setState({inputValue})}/>
-
+      <Input  inputValue={(inputValue: string) => this.setState({inputValue})}
+      idName="inputLogin"
+      />
+        
           {// <form onSubmit={this.handleSubmit}>
             // <label>
             // Einmalcode:

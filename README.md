@@ -1,3 +1,7 @@
+# Please Note
+This project isn't very functional at all. It was used to learn some of the basic priciples of Typescript and React.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
